@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Document</title>
+</head>
+<body>
+
+    <div id="hard">
+
+
+    </div>
+
+
+    <script>
+      const hard = document.getElementById('hard');
+      const cardbox = document.createElement('article');
+
+
+
+      cardbox.setAttribute('class', 'cardbox');
+
+      hard.appendChild(cardbox);
+
+      const cards = [
+        { 'name': 'bild1',
+          'img': 'img/1.png'},
+        { 'name': 'bild2',
+          'img': 'img/2.png'},
+        { 'name': 'bild3',
+          'img': 'img/3.png'},
+        { 'name': 'bild4',
+          'img': 'img/4.png'},
+        { 'name': 'bild5',
+          'img': 'img/5.png'},
+        { 'name': 'bild6',
+          'img': 'img/6.png'},
+        { 'name': 'bild7',
+          'img': 'img/7.png'},
+        { 'name': 'bild8',
+          'img': 'img/8.png'},
+        { 'name': 'bild9',
+          'img': 'img/9.png'},
+        { 'name': 'bild10',
+          'img': 'img/10.png'},
+      ];
+
+      let hardGame = cards.concat(cards);
+      hardGame.sort(() => 0.5 - Math.random());
+
+
+      hardGame.forEach(value =>{
+        const card = document.createElement('div');
+
+
+        card.classList.add('img');
+        card.dataset.name = value.name;
+        card.style.backgroundImage = `url(${value.img})`;
+        cardbox.appendChild(card);
+
+
+      });
+
+      const article = document.querySelector('.cardbox');
+      let count = 0;
+      let cardOne = '';
+      let cardTwo = '';
+
+      const matchImg = document.querySelector('.img-match')
+
+      const match = () => {
+        var cardsSelected = document.querySelectorAll('.img-display');
+        cardsSelected.forEach(card => {
+          card.classList.add('img-match')
+        })
+      }
+
+      cardbox.addEventListener('click', (event) => {
+        let clicked = event.target;
+        if(clicked.nodename === article) {return;}
+        if(count < 2){
+          count++;
+          if(count ===1){
+            cardOne = clicked.dataset.name;
+            clicked.classList.add('img-display');
+          };
+          if(count === 2){
+            cardTwo = clicked.dataset.name;
+            clicked.classList.add('img-display');
+          }
+          if(cardOne === cardTwo){
+            match();
+          }
+
+        }
+
+      });
+
+
+
+    </script>
+
+</body>
+</html>
