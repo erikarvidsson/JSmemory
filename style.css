@@ -1,0 +1,45 @@
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.hard{
+  margin-top: 60px;
+  display: inline-grid;
+  grid-template-columns: auto auto auto auto auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardbox{
+  padding-top: 60px;
+  margin: 5px;
+  display: inline-grid;
+  grid-template-columns: auto auto auto auto auto;
+  align-items: center;
+  justify-content: center;
+}
+.img{
+  margin-top: 60px;
+  height: 200px;
+  width: 200px;
+  background-color: blue;
+  margin: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-match{
+  background-color: green;
+}
+
+.img:hover{
+  transition-duration: 0.2s;
+  transform: scale(1.06);
+}
+
+.img-display{
+  background-color: yellow;
+}
