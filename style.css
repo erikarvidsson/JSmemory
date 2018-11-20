@@ -29,10 +29,7 @@ body{
   margin: 5px;
   align-items: center;
   justify-content: center;
-}
-
-.img-match{
-  background-color: green;
+  
 }
 
 .img:hover{
@@ -42,4 +39,8 @@ body{
 
 .img-display{
   background-color: yellow;
+}
+
+.img-match{
+  background-color: green;
 }
