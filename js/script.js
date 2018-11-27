@@ -1,6 +1,8 @@
 const hard = document.getElementById('hard');
 const cardbox = document.createElement('article');
 const article = document.querySelector('.cardbox');
+var clear = document.querySelectorAll('.img-match');
+var unclear = document.querySelectorAll('.img');
 let cardOne = '';
 let cardTwo = '';
 let count = 0;
@@ -42,14 +44,22 @@ hardGame.sort(() => 0.5 - Math.random());
 
 hardGame.forEach(value =>{
   const card = document.createElement('div');
+  card.classList.add('cards');
+  card.dataset.name = value.name;
 
+  const front = document.createElement('div');
+  front.classList.add('front');
+
+  const back = document.createElement('div');
+  back.classList.add('back');
+  back.style.backgroundImage = `url(${value.img})`;
 
   card.classList.add('img');
   card.dataset.name = value.name;
   card.style.backgroundImage = `url(${value.img})`;
   cardbox.appendChild(card);
-
-
+  card.appendChild(front);
+  card.appendChild(back);
 });
 
 
@@ -62,12 +72,14 @@ cardbox.addEventListener('click', function (event) {
   if(count < 2){
     count++;
     if(count === 1){
-      cardOne = clicked.dataset.name;
-      clicked.classList.add('img-display');
+      cardOne = clicked.parentNode.dataset.name;
+      console.log(cardOne);
+      clicked.parentNode.classList.add('img-display');
     }
     else {
-      cardTwo = clicked.dataset.name;
-      clicked.classList.add('img-display');
+      cardTwo = clicked.parentNode.dataset.name;
+      console.log(cardTwo);
+      clicked.parentNode.classList.add('img-display');
     }
     if(cardOne !== '' && cardTwo !== ''){
 
@@ -102,4 +114,8 @@ var selected = document.querySelectorAll('.img-display');
 selected.forEach(card => {
   card.classList.remove('img-display')
 });
+}
+
+if(clear.count === 10){
+alert('DO you WANT TO RESET');
 }

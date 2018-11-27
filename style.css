@@ -29,7 +29,7 @@ body{
   margin: 5px;
   align-items: center;
   justify-content: center;
-  
+
 }
 
 .img:hover{
@@ -42,5 +42,5 @@ body{
 }
 
 .img-match{
-  background-color: green;
+  background-color: gold;
 }
