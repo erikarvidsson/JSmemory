@@ -8,12 +8,13 @@ let cardTwo = '';
 let count = 0;
 let noMatch = null;
 let delay = 600;
-
-
+let pairs = 0;
+const resetBtn = document.querySelector('reset-btn');
 
 cardbox.setAttribute('class', 'cardbox');
 
 hard.appendChild(cardbox);
+
 
 const cards = [
   { 'name': 'bild1',
@@ -39,9 +40,9 @@ const cards = [
 ];
 
 let hardGame = cards.concat(cards);
-hardGame.sort(() => 0.5 - Math.random());
+hardGame.sort(shuffle);
 
-
+function makeCards(){
 hardGame.forEach(value =>{
   const card = document.createElement('div');
   card.classList.add('cards');
@@ -49,7 +50,6 @@ hardGame.forEach(value =>{
 
   const front = document.createElement('div');
   front.classList.add('front');
-
   const back = document.createElement('div');
   back.classList.add('back');
   back.style.backgroundImage = `url(${value.img})`;
@@ -60,48 +60,66 @@ hardGame.forEach(value =>{
   cardbox.appendChild(card);
   card.appendChild(front);
   card.appendChild(back);
-});
+});}
 
+makeCards(hardGame);
+
+const removeCards = () => {
+  cardbox.innerHTML = "";
+}
+
+// removeCards(hardGame);
 
 cardbox.addEventListener('click', function (event) {
   let clicked = event.target;
-  if(clicked.nodeName === article || clicked === noMatch) {
-    return;
+  if(clicked.parentNode.matches('.cards') || clicked === noMatch) {
+    if(count < 2){
+      count++;
+      if(count === 1){
+        cardOne = clicked.parentNode.dataset.name;
+        console.log(cardOne);
+        clicked.parentNode.classList.add('img-display');
+        clicked.classList.remove('front');
+      }
+      else {
+        cardTwo = clicked.parentNode.dataset.name;
+        console.log(cardTwo);
+        clicked.parentNode.classList.add('img-display');
+        clicked.classList.remove('front');
+      }
+      if(cardOne !== '' && cardTwo !== ''){
+        if(cardOne === cardTwo){
+          pairs ++;
+          setTimeout(match, delay);
+          setTimeout(resetCard, delay);
+        }else {
+          setTimeout(resetCard, delay);
+        }
+    }
+    };
+    noMatch = clicked;
   }
-
-  if(count < 2){
-    count++;
-    if(count === 1){
-      cardOne = clicked.parentNode.dataset.name;
-      console.log(cardOne);
-      clicked.parentNode.classList.add('img-display');
-    }
-    else {
-      cardTwo = clicked.parentNode.dataset.name;
-      console.log(cardTwo);
-      clicked.parentNode.classList.add('img-display');
-    }
-    if(cardOne !== '' && cardTwo !== ''){
-
-    if(cardOne === cardTwo){
-      setTimeout(match, delay);
-      setTimeout(resetCard, delay);
-    }else {
-      setTimeout(resetCard, delay);
-    }
+  if(pairs === 1){
+   pairs = 0;
+   cardbox.insertAdjacentHTML('beforeend','<div class="reset"><button class="reset-btn">Play again</button></div>');
+   setTimeout(function(){ alert("Nice!"); }, 500);
+   document.querySelector('.reset-btn').addEventListener('click', resetGame);
   }
-  noMatch = clicked;
-}
 });
 
 if(cardOne === cardTwo){
 }else{
 }
 
+function shuffle()
+{
+    return 0.5 - Math.random();
+}
+
 const match = () => {
 var selected = document.querySelectorAll('.img-display');
 selected.forEach(card => {
-  card.classList.add('img-match')
+  card.classList.add('img-match');
 });
 }
 
@@ -112,10 +130,19 @@ count = 0;
 
 var selected = document.querySelectorAll('.img-display');
 selected.forEach(card => {
-  card.classList.remove('img-display')
+  card.classList.remove('img-display');
+  card.firstChild.classList.add('front');
 });
 }
 
-if(clear.count === 10){
-alert('DO you WANT TO RESET');
+const resetGame = () => {
+  var selected = document.querySelectorAll('.img-match');
+  selected.forEach(card => {
+    card.classList.remove('img-match');
+    card.firstChild.classList.add('front');
+  });
+    cardbox.removeChild(cardbox.querySelector('.reset'));
+    removeCards(hardGame);
+    hardGame.sort(shuffle);
+    makeCards(hardGame);
 }

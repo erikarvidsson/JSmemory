@@ -2,15 +2,54 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: purple;
 }
 
 
-.hard{
-  margin-top: 60px;
-  display: inline-grid;
+#hard{
   grid-template-columns: auto auto auto auto auto;
   align-items: center;
-  justify-content: center;
+  justify-content: center;vertical-align: top;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.card {
+  position: relative;
+  transition: all .8s linear;
+  transform-style: preserve-3d;
+  margin: 5px;
+}
+.card:active {
+  position: relative;
+  transition: all .8s linear;
+  transform-style: preserve-3d;
+  margin: 5px;
+}
+
+.back,
+.front {
+  position: absolute;
+  backface-visibility: hidden;
+  height: 200px;
+  width: 200px;
+}
+
+.img-match .front {
+  display: none;
+}
+
+.back {
+  transform: rotateY(180deg);
+  filter: FlipH;
+  background-color: yellow;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.front {
+  background: blue;
 }
 
 .cardbox{
@@ -20,6 +59,7 @@ body{
   grid-template-columns: auto auto auto auto auto;
   align-items: center;
   justify-content: center;
+  perspective: 1000px;
 }
 .img{
   margin-top: 60px;
@@ -29,7 +69,6 @@ body{
   margin: 5px;
   align-items: center;
   justify-content: center;
-
 }
 
 .img:hover{
@@ -39,6 +78,8 @@ body{
 
 .img-display{
   background-color: yellow;
+  transform: rotateY(360deg);
+  animation-duration: 0.8s;
 }
 
 .img-match{
