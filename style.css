@@ -85,3 +85,20 @@ body{
 .img-match{
   background-color: gold;
 }
+
+.reset-btn {
+  border: 8px solid white;
+  background-color: purple;
+  color: white;
+  position: fixed;
+  z-index: 2;
+  width: 400px;
+  height: 250px;
+  top: 50%;
+  left: 50%;
+  margin-left: -200px;
+  margin-top: -125px;
+  right: 50%;
+  font-size: 40px;
+  font-weight: 700;
+}
