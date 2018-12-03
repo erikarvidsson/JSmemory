@@ -1,11 +1,13 @@
 const hard = document.getElementById('hard');
 const cardbox = document.createElement('article');
 const article = document.querySelector('.cardbox');
+const counter = document.querySelector('.counter')
 var clear = document.querySelectorAll('.img-match');
 var unclear = document.querySelectorAll('.img');
 let cardOne = '';
 let cardTwo = '';
 let count = 0;
+let clickcount = 0;
 let noMatch = null;
 let delay = 600;
 let pairs = 0;
@@ -15,7 +17,7 @@ cardbox.setAttribute('class', 'cardbox');
 
 hard.appendChild(cardbox);
 
-
+// Array of cards
 const cards = [
   { 'name': 'bild1',
     'img': 'img/1.png'},
@@ -39,6 +41,7 @@ const cards = [
     'img': 'img/10.png'},
 ];
 
+// Duplicates the same array of cards
 let hardGame = cards.concat(cards);
 hardGame.sort(shuffle);
 
@@ -67,17 +70,19 @@ hardGame.forEach(value =>{
 
 makeCards(hardGame);
 
+// removeCards(hardGame);
 const removeCards = () => {
   cardbox.innerHTML = "";
 }
 
-// removeCards(hardGame);
 
+// Make cards clickable and alble to match
 cardbox.addEventListener('click', function (event) {
   let clicked = event.target;
   if(clicked.parentNode.matches('.cards') || clicked === noMatch) {
     if(count < 2){
       count++;
+      clickcount++;
       if(count === 1){
         cardOne = clicked.parentNode.dataset.name;
         console.log(cardOne);
@@ -102,6 +107,8 @@ cardbox.addEventListener('click', function (event) {
     };
     noMatch = clicked;
   }
+    counter.innerHTML = clickcount;
+
 
   if(pairs === hardGameLenght){
    pairs = 0;
@@ -110,15 +117,15 @@ cardbox.addEventListener('click', function (event) {
   }
 });
 
-if(cardOne === cardTwo){
-}else{
-}
+// Clickcounter
+counter.innerHTML = clickcount;
 
-function shuffle()
-{
+// Shuffle cards
+function shuffle() {
     return 0.5 - Math.random();
 }
 
+// Add matched css to matched cards
 const match = () => {
 var selected = document.querySelectorAll('.img-display');
 selected.forEach(card => {
@@ -126,6 +133,7 @@ selected.forEach(card => {
 });
 }
 
+// Resets chosen cards if not matched
 const resetCard = () => {
 cardOne = '';
 cardTwo = '';
@@ -138,6 +146,7 @@ selected.forEach(card => {
 });
 }
 
+// Resets game after you win and press the reset button
 const resetGame = () => {
   var selected = document.querySelectorAll('.img-match');
   selected.forEach(card => {
@@ -148,4 +157,5 @@ const resetGame = () => {
     removeCards(hardGame);
     hardGame.sort(shuffle);
     makeCards(hardGame);
+    clickcount = 0;
 }
