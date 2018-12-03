@@ -42,6 +42,9 @@ const cards = [
 let hardGame = cards.concat(cards);
 hardGame.sort(shuffle);
 
+const hardGameLenght = hardGame.length/ 2;
+
+
 function makeCards(){
 hardGame.forEach(value =>{
   const card = document.createElement('div');
@@ -99,7 +102,7 @@ cardbox.addEventListener('click', function (event) {
     };
     noMatch = clicked;
   }
-  if(pairs === 1){
+  if(pairs === hardGameLenght){
    pairs = 0;
    cardbox.insertAdjacentHTML('beforeend','<div class="reset"><button class="reset-btn">Play again</button></div>');
    setTimeout(function(){ alert("Nice!"); }, 500);
