@@ -102,10 +102,10 @@ cardbox.addEventListener('click', function (event) {
     };
     noMatch = clicked;
   }
+
   if(pairs === hardGameLenght){
    pairs = 0;
-   cardbox.insertAdjacentHTML('beforeend','<div class="reset"><button class="reset-btn">Play again</button></div>');
-   setTimeout(function(){ alert("Nice!"); }, 500);
+   cardbox.insertAdjacentHTML('beforeend','<div class="reset"><button class="reset-btn">NICE! <br> Play again</button></div>');
    document.querySelector('.reset-btn').addEventListener('click', resetGame);
   }
 });
