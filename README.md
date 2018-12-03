@@ -14,6 +14,7 @@ First PHP assignment
 * CSS
 
 ## Testers
+* Mikael Ravantti
 
 ## Author
 * Erik Arvidsson
