@@ -92,6 +92,16 @@ body{
   background-color: gold;
 }
 
+.counter{
+  position: absolute;
+  z-index: 2;
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  right: 50%;
+  top: 93%;
+}
+
 .reset-btn {
   border: 8px solid white;
   background-color: purple;
