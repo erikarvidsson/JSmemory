@@ -15,6 +15,7 @@ JS memory assignment
 
 ## Testers
 * Mikael Ravantti
+* Vincent Lidebo Kjellman
 
 ## Author
 * Erik Arvidsson
