@@ -3,6 +3,7 @@ const cardbox = document.createElement('article');
 const article = document.querySelector('.cardbox');
 const counter = document.querySelector('.counter')
 const click = document.querySelector('.click')
+const cookie = document.querySelector('.cookie')
 var clear = document.querySelectorAll('.img-match');
 var unclear = document.querySelectorAll('.img');
 let cardOne = '';
@@ -13,6 +14,7 @@ let noMatch = null;
 let delay = 600;
 let pairs = 0;
 let often = '/10';
+let latest = 'LATEST GAME SCORE: ';
 const resetBtn = document.querySelector('reset-btn');
 
 cardbox.setAttribute('class', 'cardbox');
@@ -111,17 +113,21 @@ cardbox.addEventListener('click', function (event) {
   }
     counter.innerHTML = clickcount;
     click.innerHTML = pairs + often;
+    cookie.innerHTML = latest + document.cookie;
 
   if(pairs === hardGameLenght){
+   document.cookie = clickcount;
    pairs = 0;
    cardbox.insertAdjacentHTML('beforeend','<div class="reset"><button class="reset-btn">NICE! <br> Play again</button></div>');
    document.querySelector('.reset-btn').addEventListener('click', resetGame);
+
   }
 });
 
-// Clickcounter
+// Clickcounter/ pairscounter/ lastestgameCounter
 counter.innerHTML = clickcount;
 click.innerHTML = pairs + often;
+cookie.innerHTML = latest + document.cookie;
 
 // Shuffle cards
 function shuffle() {

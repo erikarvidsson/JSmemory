@@ -99,13 +99,18 @@ body{
   z-index: 2;
   font-size: 28px;
   font-weight: 700;
+  font-family: sans-serif;
   color: white;
   right: 50%;
   top: 93%;
 }
 
 .click{
-right: 40%;
+right: 22.9%;
+}
+
+.cookie{
+left: 22.9%;
 }
 
 .reset-btn {
