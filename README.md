@@ -1,7 +1,7 @@
 #JSmemory
 <img src="https://media.giphy.com/media/t32aaMe14FANW/giphy.gif" width="100%">
 
-First PHP assignment
+JS memory assignment
 
 ## Getting started
 * Clone repository using in GitHub Desktop

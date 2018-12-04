@@ -148,8 +148,8 @@ selected.forEach(card => {
 
 // Resets game after you win and press the reset button
 const resetGame = () => {
-  var selected = document.querySelectorAll('.img-match');
-  selected.forEach(card => {
+var selected = document.querySelectorAll('.img-match');
+selected.forEach(card => {
     card.classList.remove('img-match');
     card.firstChild.classList.add('front');
   });
