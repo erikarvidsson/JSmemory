@@ -2,6 +2,7 @@ const hard = document.getElementById('hard');
 const cardbox = document.createElement('article');
 const article = document.querySelector('.cardbox');
 const counter = document.querySelector('.counter')
+const click = document.querySelector('.click')
 var clear = document.querySelectorAll('.img-match');
 var unclear = document.querySelectorAll('.img');
 let cardOne = '';
@@ -11,6 +12,7 @@ let clickcount = 0;
 let noMatch = null;
 let delay = 600;
 let pairs = 0;
+let often = '/10';
 const resetBtn = document.querySelector('reset-btn');
 
 cardbox.setAttribute('class', 'cardbox');
@@ -103,12 +105,12 @@ cardbox.addEventListener('click', function (event) {
         }else {
           setTimeout(resetCard, delay);
         }
-    }
+      }
     };
     noMatch = clicked;
   }
     counter.innerHTML = clickcount;
-
+    click.innerHTML = pairs + often;
 
   if(pairs === hardGameLenght){
    pairs = 0;
@@ -119,6 +121,7 @@ cardbox.addEventListener('click', function (event) {
 
 // Clickcounter
 counter.innerHTML = clickcount;
+click.innerHTML = pairs + often;
 
 // Shuffle cards
 function shuffle() {
